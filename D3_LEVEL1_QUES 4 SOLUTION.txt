@@ -1,0 +1,39 @@
+/* Find the largest number by deleting single digit in a 4 digit number 5872 - 872, 9856 - 986
+
+Concepts to be used.
+- Loops
+- Operators  */
+
+
+#include <stdio.h>
+
+int find_largest_number(int n) {
+    int largest = 0;
+    int pow10 = 1;
+
+    for (int i = 0; i < 4; i++) {
+        int digit = (n / pow10 / 10) * pow10 + (n % pow10);
+        if (digit > largest) {
+            largest = digit;
+        }
+        pow10 *= 10;
+    }
+
+    return largest;
+}
+
+int main() {
+    int num;
+    printf("Enter a 4-digit number: ");
+    scanf("%d", &num);
+    int largest = find_largest_number(num);
+    printf("Largest number by deleting a single digit: %d\n", largest);
+    return 0;
+}
+
+/* Enter a 4-digit number: 5872
+Largest number by deleting a single digit: 872
+or
+Enter a 4-digit number: 9856
+Largest number by deleting a single digit: 986 */
+
