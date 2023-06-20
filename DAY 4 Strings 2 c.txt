@@ -1,0 +1,23 @@
+//Convert String as Integer
+
+#include <stdio.h>
+
+int stringToInt(const char* str) {
+    int result = 0;
+    int i = 0;
+
+    while (str[i] != '\0') {
+        result = result * 10 + (str[i] - '0');
+        i++;
+    }
+
+    return result;
+}
+
+int main() {
+    const char str[] = "5278";
+    int num = stringToInt(str);
+
+    printf("%d\n", num);
+    return 0;
+}

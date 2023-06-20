@@ -1,0 +1,31 @@
+// rotate string
+
+
+ #include <stdio.h>
+#include <string.h>
+
+void rotateString(char *str, int n) {
+    int len = strlen(str);
+    n = n % len; // Ensure n is within the string length
+    
+    // Rotate right
+    char temp;
+    for (int i = 0; i < n; i++) {
+        temp = str[len - 1];
+        for (int j = len - 1; j > 0; j--) {
+            str[j] = str[j - 1];
+        }
+        str[0] = temp;
+    }
+}
+
+int main() {
+    char str[] = "abcdxyz";
+    int n = 3; // Rotate right by 3 positions
+
+    printf("Before rotation: %s\n", str);
+    rotateString(str, n);
+    printf("After rotation: %s\n", str);
+
+    return 0;
+}
