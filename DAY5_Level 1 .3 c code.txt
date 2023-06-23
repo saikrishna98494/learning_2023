@@ -1,0 +1,58 @@
+// Write a program using structures to calculate the difference between two time periods using a user-defined function.
+
+
+#include <stdio.h>
+
+struct Time {
+    int hours;
+    int minutes;
+    int seconds;
+};
+
+struct Time getTimeDifference(struct Time startTime, struct Time endTime) {
+    struct Time difference;
+    
+    // Convert both start and end times to seconds
+    int startTimeInSeconds = startTime.hours * 3600 + startTime.minutes * 60 + startTime.seconds;
+    int endTimeInSeconds = endTime.hours * 3600 + endTime.minutes * 60 + endTime.seconds;
+    
+    // Calculate the time difference in seconds
+    int timeDifferenceInSeconds = endTimeInSeconds - startTimeInSeconds;
+    
+    // Convert time difference back to hours, minutes, and seconds
+    difference.hours = timeDifferenceInSeconds / 3600;
+    difference.minutes = (timeDifferenceInSeconds % 3600) / 60;
+    difference.seconds = (timeDifferenceInSeconds % 3600) % 60;
+    
+    return difference;
+}
+
+int main() {
+    struct Time startTime, endTime, difference;
+    
+    // Read start time from the user
+    printf("Enter the start time:\n");
+    printf("Hours: ");
+    scanf("%d", &startTime.hours);
+    printf("Minutes: ");
+    scanf("%d", &startTime.minutes);
+    printf("Seconds: ");
+    scanf("%d", &startTime.seconds);
+    
+    // Read end time from the user
+    printf("\nEnter the end time:\n");
+    printf("Hours: ");
+    scanf("%d", &endTime.hours);
+    printf("Minutes: ");
+    scanf("%d", &endTime.minutes);
+    printf("Seconds: ");
+    scanf("%d", &endTime.seconds);
+    
+    // Calculate the time difference
+    difference = getTimeDifference(startTime, endTime);
+    
+    // Print the time difference
+    printf("\nTime Difference: %02d:%02d:%02d\n", difference.hours, difference.minutes, difference.seconds);
+    
+    return 0;
+}

@@ -1,0 +1,41 @@
+//Write a program to demonstrate the swapping the fields of two structures using pointers
+
+#include <stdio.h>
+
+struct Point {
+    int x;
+    int y;
+};
+
+void swapFields(struct Point* p1, struct Point* p2) {
+    struct Point temp;
+
+    // Swap the fields using a temporary structure
+    temp = *p1;
+    *p1 = *p2;
+    *p2 = temp;
+}
+
+int main() {
+    struct Point p1 = {2, 3};
+    struct Point p2 = {5, 7};
+
+    printf("Before swapping:\n");
+    printf("p1 = (%d, %d)\n", p1.x, p1.y);
+    printf("p2 = (%d, %d)\n", p2.x, p2.y);
+
+    swapFields(&p1, &p2);
+
+    printf("\nAfter swapping:\n");
+    printf("p1 = (%d, %d)\n", p1.x, p1.y);
+    printf("p2 = (%d, %d)\n", p2.x, p2.y);
+
+    return 0;
+}
+/*Before swapping:
+p1 = (2, 3)
+p2 = (5, 7)
+
+After swapping:
+p1 = (5, 7)
+p2 = (2, 3)*/
